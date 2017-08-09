@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\296bd6759d9a29588dfc192befefdc01f5d8372e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="553e58050e91d4295a2f1d1f80ea63b41ee5bc4b">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1ea809eaaac248e199173b50c628e6ac4df38b5d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\71d4d7409b8984f72799fe5f8c63683916cb3419\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d79c575e1d97b0298746a4c032a0c1dc201c2f82">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d0f2105fa0383e0b81bfcd36a28e4ccf17c3f86a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\0663dbd96c279571c0824d3144f3c8cd3cdfaeb5\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="29bd9a40adebb952fbe97515aac9db5dfbd90d93">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8cd5903d8066479250905286a98a6d2e9ef8005c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\aeb0aceb47ed8ef746bb5edb225488b955aa49cd\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b34276d1fea450411cedd49d3146b04838f9dd6e">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d4665bab29480399da1ed8fbd7ae1dea2b4bb0b3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\418556f749fcee23aff71fc98216a3e719c86438\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="cea6fccbfe2b9ca7701a8766710179cd41ae1974">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6b362a88789dadb3862f87a12ebee45c510c8661\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\b1ecc8a7b4a6c100f474fafb78887576939de637\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="740c4226d6bec1adaaf5fee4b9178674b695f75a">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_84c3a8cc108d8dc2c761726c7e158046a51dae95\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\b0198ef8a13473a6ac3b78f040433043f3c606a6\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2f2f16fde0c662116f735951b4e830afba373cc6">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9c2203c12c7f3be81bf9d07adec674913bcb2abf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\0dcbc142e35bcef3b23902dee9826dda8d973a93\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="81978250f6de6ffdf2ea4632e7955613103e984c">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c0f46fad55b7e15a0edf2d50dd052d6e2d5ccd7a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\92751b9d4184696e948ef370e38ccf6875e623f8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9024225796c3f11342ef6a4a99439f2f988bafb0">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c1002f51b6e744febff9cda05786c0a294f68174\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\e38ce3e2e04eb6eaf87321879169665f84a49e61\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da832806828ba407284c0c4b1d87b8f9ed9f2520">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_df7d718e5178e6e8ebe8b14860a73589bb09e7ab\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\44d8099aa68309bfd66d4aa440507411e9c533b8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ab2c6111c9e733c965725976ca2a2e57670000f9">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5875862b2fe1b41b444358ccfce22d15b1de5878\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\6cbaf44c9277f167165df7db0ca0fa5103b6a18b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9b775d7b643397da3ab57e62ae8abb74a9cc9a83">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0af9e5de22b7e9b622ab1a8993b58e821420a504\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\acffd41e275c015b9aa5b79b7ee0810cfe8e901e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="1172091167cff5873cbcccad4c0e08ec9e3240de">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3ee7d84b8cd5597a1433c34a044715d2e79b80ee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\02505db01a3024901bfa4d089e430f207cdd7ed5\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4d7184a651c5975b49928ce7c76175d491ee7a5e">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_80ea3496d50deadf8bef8c77fd6b3df33751f553\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\e83cf5b409799da47e1509f16eca86da0a56fee3\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="7b3eaf755284fb08a6d616a55fbb07dc3917d5e7">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0b8d031b50623d5d3acaa94e4e72ff973138b43d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\e58db6b707662ef43a976a2d2be53ca13bfd7c62\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="aec5337725e7a3171f7f40a50d9837745693d429">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_feff57a17e30d224ecb01cd8712f3b0a2eedfa21\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\f0e9c119bd84e582b88f1d43f425f36c9c01eff1\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="de24d8023e8da79f30bee46b298f606e5e758432">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5f6593ce4964439f9cec86c9d40de1dcdd248138\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\56b2db34f67f689041bfdaf0b8479b4c04a38e3a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d54a722583c1b99735f62d395806fa38bf5669ae">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f7aca5953400dd334d848d7b7ee9506f15795ec2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\e7f4751c89a996602f166ab19a69193af6dcb65e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d4e5223997fa6032b326167ee4586ae0b3498647">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d12ef045378aafb44debd8fd36f2eec903e46e4b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\721192828c576fea2b803ed3f8f76727d5e8bddf\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a00607e7cf55392edd324bc8fa3827ded7e9859b">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ece5d7a2638dbde9d682dfbb669a95f49ea7c126\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\f628b07c57a8cafcad27c5c712ff72aab7f0df9b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="cf5f630e354827a90ffe90ce2a330495108f0595">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d4e2cae992e27537e3ce64f6e26158512f8db4d9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\543f8296aaff11b56cff118bfd27a9e4beb91a7b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="dd057bc43f1c1e2f13566f5fe800d077b08b61b9">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_22e88de420948950c48bcfacbe98f3a86fb5d794\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\efd4ca3425dd877e4a8881bd81ab5fa232de47c3\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3dbaff65d26258306561d545f88d6712ac41dd46">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_99246c138bd9a1bb541c5dd97cd6d708cccc4023\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\e8af023bfbdf0fcbc0ff79505323b012024306b6\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0c7e0d83e333a25f969bce43db78150c63e7aa0c">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1177d140507a1f2d0d7053757b0cdf424a2e375d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\15c4f148de8ad6cc74d207e4fd8b84c1b5f6af35\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5c1f80f62ccad560edcd6609fc75f385cf7cb45a">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6e1f6b6e8f7c9e6969fd0c7651f3441180104355\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\da3f2520dce47275d27f351f663d174ed0d17c1c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9ff5114aff3bfb387577ba92a11408dcf0441c24">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_84765b4de00aab658210ec9fd84e70d7fc3d281f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\8edb119cd1f93b99f5b4963f29b2f0e09673c5a4\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ec94bba6a9bbd3461d90830e0a0752a6487f5484">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_71366bd635c77795aa91d327a71e51efb3efa883\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\c8e65e115d6edb9c8f8b9a905c09baaab2408b4f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="79100391e3b32d7323a04b7b8a9c8ad0adbae583">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_29b9d61ef9bba86b2083425bc41250943372c27d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_963e6d1ae30c4d13ce44c419bbaa7612846fd4ac\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\55af05734f44d75677e270dcf500b6520390c814\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="215363c803a119c16058c8bc0ccd0a4ee62e7157">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3148a6c74c2f2be33e9da69c10553a595f49e4ee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\a273b6849832a073c4774a0e69c8a8c2fd51366d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="577aa74e06e6b4b407ff23ac75043685ae26dcbb">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7dbf0a61a2a2c021641c914bed0f543922f43f57\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\66d1d4ddef969be3112f886065851388bf64169a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="60a8cdd1ad9b8d22a5d44bc8e479257ced2bf075">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e0dd3f797ae126cc87b1205038e7c2efc4dc0f89\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\fee8ff788ec98d13d1113e6829edc4e94d4371ac\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f1968b9614bc6851e99db64e356cf60063503e5d">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fa4e95b74fab98acacba802caa962a40c34589c5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\081164b4d68cb64330020041e82d60e5002385b7\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8f83a631abfdb790591a720e0cfb5f41329831c3">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4ea35ed1edeaf4af0295680a15ab514608cd183c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\e776fdea4771fe751baa37110991204532d96e68\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="7979972576b6dbb1688052e42e5199abb54f81ba">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ca0fb00dc2f96b76da2a73f89b6ecac55fcc0725\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\73f1001f78ab863b9ecc4e6ba88ea552d91cb948\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="1b41f7538ea1af0aad76cb3253b87b13744788c2">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5c14f7dd943dabe90e98e16f2fe56b3b94af2637\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\9e29f6002deb05e36b443e1a96b1c8431434b6cd\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0a534044236cf81b002604643d23e7ca56bd1ee0">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_288e493da85c8e4d0dec2a12175f47d83a17f834\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\4a1d118b3dfdf0a0ea0189d1257ae4a2de7d9ab8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d068a922134f5f9b9f98bfc609145e09af03c2a4">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f5f04dd80881887cd6a2de4ed4cb3e792de92974\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\dbd6a6f9f26b1a8670c190669c3abdc42969a7dc\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ba4defc8cb4ed5b90b8ef71602722cdeebe507cd">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d18cfaa2f76c44d2f897dbcaddc90efe6cd59ccb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\cc11ebb7d9ceb4f7d4e3e85dacf5cffeeb7d05d2\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f9aa417cd6d4373c413f6e60865133bcfdb7096b">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4f29e2bb68d700ac8d09240e85df235f9428b749\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0d9fce2d5937c794d6134cce22c62adeb6d09573">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d9a5f752a0d55ac9d399397123d197b89d83abe6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\4fd539cae98cdffde148be955cd34bc4378fdb8d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="079c035b2a1820bf455e0ae7fd484dec575e2182">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ffb8503905c6fdb70b305ee3d0a803dea1ba39e2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\00d02fb41317c78b8b09e9073bfffdf3865c0786\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="c4ba6d53176502b2672a5d7d25a0000d1a6e701c">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_97234281b047ddba32d26773f8634cf338cd5317\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\fb8fd2c078fb702df4c8b33681d57f2762e2faf8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="84a9797d6c3dd732d00f0433edc17778573cea17">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4829ad9c7f0d28f62b9a080595b17cee7801faf2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\1aa3e52923377447042ae010d09883fa28b7b0d5\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="cad5ae5774f39b7017a3ae3d103e7b78506397b0">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f1f2836d7972fc09c73b6e4111c34c0d0ca39f8e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Grupo3\.android\build-cache\46d73e0cd2c200e62a4da854498c9c13da3b8d97\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8a43729dd397e849f2a8bdc5d57a2f3170efb3ed">
+        <dex dex="C:\Users\Grupo3\AndroidStudioProjects\RutasSantaElena1\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_39788738667c0bf052c616cc6f10394c201ed11e\classes.dex" />
+    </item>
+
+</items>
