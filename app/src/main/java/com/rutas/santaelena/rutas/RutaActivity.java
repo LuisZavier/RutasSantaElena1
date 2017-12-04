@@ -1,4 +1,5 @@
 package com.rutas.santaelena.rutas;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import android.location.Location;
+import android.view.View;
 import android.widget.TextView;
 
 public class RutaActivity extends AppCompatActivity{
@@ -31,7 +33,10 @@ public class RutaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ruta);
 
-        Resources res = getResources();
+    }
+
+
+      /*  Resources res = getResources();
 
         //String path = Environment.getExternalStorageDirectory().toString() + "/prueba.gpx";
         //System.out.println(path);
@@ -48,7 +53,7 @@ public class RutaActivity extends AppCompatActivity{
 
         }
         System.out.println(info);
-        textInfo.setText(info);
+        textInfo.setText(info);*/
     }
 
     /*
@@ -58,7 +63,7 @@ public class RutaActivity extends AppCompatActivity{
         return true;
     }
 */
-    class GpxNode{
+    /*class GpxNode{
 
         Location location;
         String ele;
@@ -124,7 +129,7 @@ public class RutaActivity extends AppCompatActivity{
             Document document = documentBuilder.parse(is);
             Element elementRoot = document.getDocumentElement();
 
-            NodeList nodelist_trkpt = elementRoot.getElementsByTagName("trkpt");
+            NodeList nodelist_trkpt = elementRoot.getElementsByTagName("wpt");
 
             for(int i = 0; i < nodelist_trkpt.getLength(); i++){
 
@@ -137,10 +142,14 @@ public class RutaActivity extends AppCompatActivity{
                 String newLongitude = attributes.getNamedItem("lon").getTextContent();
                 Double newLongitude_double = Double.parseDouble(newLongitude);
 
+
+
                 String newLocationName = newLatitude + ":" + newLongitude;
                 Location newLocation = new Location(newLocationName);
                 newLocation.setLatitude(newLatitude_double);
                 newLocation.setLongitude(newLongitude_double);
+
+
 
                 GpxNode newGpxNode = new GpxNode(newLocation);
                 list.add(newGpxNode);
@@ -163,5 +172,5 @@ public class RutaActivity extends AppCompatActivity{
             e.printStackTrace();
         }
         return list;
-    }
-}
+    }*/
+

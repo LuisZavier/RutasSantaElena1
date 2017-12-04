@@ -11,7 +11,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import org.w3c.dom.Document;
@@ -37,6 +40,9 @@ public class PruebaActivity extends FragmentActivity implements OnMapReadyCallba
 
     private GoogleMap mMap;
     private List<LatLng> lista = new ArrayList<>();
+
+    private List<LatLng> listaWpt = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +56,9 @@ public class PruebaActivity extends FragmentActivity implements OnMapReadyCallba
         mMap = googleMap;
         //pruebita();
         polilinea();
+        Wpt();
         mMap.moveCamera(CameraUpdateFactory.newLatLng(lista.get(0)));
-        mMap.addPolyline(new PolylineOptions().addAll(lista).width(5).color(Color.BLUE));
+      //si va esto  mMap.addPolyline(new PolylineOptions().addAll(lista).width(5).color(Color.BLUE));
     }
     /*public void pruebita(){
         String path = Environment.getExternalStorageDirectory().toString() + "/transcisa7.gpx";
@@ -85,6 +92,29 @@ public class PruebaActivity extends FragmentActivity implements OnMapReadyCallba
             LatLng punto = new LatLng(latitude,longitude);
             lista.add(punto);
 
+        }
+    }
+    public void Wpt(){
+        System.out.println("entro");
+        Marker marcador ;
+        Resources res = getResources();
+        TextView textInfo = (TextView)findViewById(R.id.info);
+        String info = "";
+        List<GpxNode> gpxList = decodeGPX(res.openRawResource(R.raw.transcisa7));
+        for(int i = 0; i < gpxList.size(); i++){
+            info = gpxList.get(i).getLocationString() ;
+            String[] latlong = info.split(":");
+            double latitude = Double.parseDouble(latlong[0]);
+            double longitude = Double.parseDouble(latlong[1]);
+            LatLng punto = new LatLng(latitude,longitude);
+            listaWpt.add(punto);
+
+            marcador = mMap.addMarker(new MarkerOptions().position(punto)
+                    .title("PARADA")
+                    // .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon)));
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+
+System.out.println("dibuja");
         }
     }
     class GpxNode{
@@ -141,7 +171,70 @@ public class PruebaActivity extends FragmentActivity implements OnMapReadyCallba
         //
         return list;
     }
+    private List<GpxNode> decodeWPT(File f)
+    {
+        List<GpxNode> list1 = new ArrayList<GpxNode>();
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            list1 = decodeGPX(fis);
+        }catch (FileNotFoundException fne)
+        {
+            fne.printStackTrace();
+        }
+        //
+        return list1;
+    }
 
+    private List<GpxNode> decodeWPT(InputStream is){
+        List<GpxNode> list1 = new ArrayList<GpxNode>();
+
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        try {
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            //FileInputStream fileInputStream = new FileInputStream();
+            Document document = documentBuilder.parse(is);
+            Element elementRoot = document.getDocumentElement();
+
+            NodeList nodelist_trkpt = elementRoot.getElementsByTagName("wpt");
+
+            for(int i = 0; i < nodelist_trkpt.getLength(); i++){
+
+                Node node = nodelist_trkpt.item(i);
+                NamedNodeMap attributes = node.getAttributes();
+
+                String newLatitude = attributes.getNamedItem("lat").getTextContent();
+                Double newLatitude_double = Double.parseDouble(newLatitude);
+
+                String newLongitude = attributes.getNamedItem("lon").getTextContent();
+                Double newLongitude_double = Double.parseDouble(newLongitude);
+
+                String newLocationName = newLatitude + ":" + newLongitude;
+                Location newLocation = new Location(newLocationName);
+                newLocation.setLatitude(newLatitude_double);
+                newLocation.setLongitude(newLongitude_double);
+
+                GpxNode newGpxNode = new GpxNode(newLocation);
+                list1.add(newGpxNode);
+
+            }
+
+            is.close();
+
+        } catch (ParserConfigurationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SAXException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return list1;
+    }
     private List<GpxNode> decodeGPX(InputStream is){
         List<GpxNode> list = new ArrayList<GpxNode>();
 
