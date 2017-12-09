@@ -3,7 +3,6 @@ package com.rutas.santaelena.rutas;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 
 
@@ -18,8 +17,6 @@ import android.support.v4.app.ActivityCompat;
 
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,13 +27,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
-import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -73,8 +64,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int LOCATION_REQUEST_CODE = 1;
     PlaceAutocompleteFragment placeAutoComplete;
     private GoogleMap mMap;
-    Polyline line;
+    Polyline line,lineUbicActual;
 
+    LatLng findPunto ;
+    LatLng findPunto2;
 
     private ArrayList<LatLng> listaWpt = new ArrayList<>();
     private ArrayList<LatLng> lista = new ArrayList<>();
@@ -109,9 +102,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(final GoogleMap googleMap) {
 
         mMap = googleMap;
+        miUbicacion();
         polilinea();
         //wpt();
-        miUbicacion();
+
 
         ///////////// EN CONSTRUCCION BUSQUEDA DEL DESTINO INGRESANDO POR TEXTO ///////////////////////
         /*placeAutoComplete = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete);
@@ -174,50 +168,67 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 if (MarkerPoints.size() == 1) {
                     //options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
-                } else if (MarkerPoints.size() >= 2 ) {
-                    marcador1=mMap.addMarker(new MarkerOptions()
-                            .position(pointDest)
-                            .draggable(true)
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE))); //punto destino
-                    Markerdest = MarkerPoints.get(1);
-                    if (line != null) {
-                        line.remove();
-                    }
+                } else {
+                    if (MarkerPoints.size() >= 2) {
+                        marcador1 = mMap.addMarker(new MarkerOptions()
+                                .position(pointDest)
+                                .title("Su destino")
+                                .draggable(true)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE))); //punto destino
+                        Markerdest = MarkerPoints.get(1);
 
-                    //isLocationOnEdge: DETERMINA SI UN PUNTO SE ENCUENTRA EN UNA POLILINEA CERCA DENTRO O FUERA DE ELLA
-                    // CON UN RADIO DE TOLERANCIA
-                    boolean encuentraBordePoli = PolyUtil.isLocationOnEdge(pointDest,lista,false,radioCiruloTolerancia);
+                        if (line != null) {
+                            line.remove();
+                        }
+                        if (lineUbicActual != null) {
+                            lineUbicActual.remove();
+                        }
+
+                        //isLocationOnEdge: DETERMINA SI UN PUNTO SE ENCUENTRA EN UNA POLILINEA CERCA DENTRO O FUERA DE ELLA
+                        // CON UN RADIO DE TOLERANCIA
+                        boolean encuentraBordePoli = PolyUtil.isLocationOnEdge(pointDest, lista, false, radioCiruloTolerancia);
 
 
-                    while (encuentraBordePoli!=true){
-                        cleanCircle();
-                        // System.out.println("entrammos while ");
-                        while (radioCiruloTolerancia<1000){ //Radio Iterativo
+                        while (encuentraBordePoli != true) {
+                            cleanCircle();
+                            // System.out.println("entrammos while ");
+                            while (radioCiruloTolerancia < 1000) { //Radio Iterativo
 
-                                radioCiruloTolerancia=radioCiruloTolerancia+100;
+                                radioCiruloTolerancia = radioCiruloTolerancia + 100;
                                 Circles(radioCiruloTolerancia);
 
                                 cleanCircle();
-                                encuentraBordePoli = PolyUtil.isLocationOnEdge(pointDest,lista,false,radioCiruloTolerancia);
-                                if(encuentraBordePoli==true)
+                                encuentraBordePoli = PolyUtil.isLocationOnEdge(pointDest, lista, false, radioCiruloTolerancia);
+                                if (encuentraBordePoli == true)
                                     break;
 
 
+                            }
+                            //radioCiruloTolerancia=300;
+                            break;
                         }
-                        //radioCiruloTolerancia=300;
-                        break;
-                    }
 
-                    if (encuentraBordePoli==true){
-                        mMap.addPolyline(new PolylineOptions().addAll(lista).width(5).color(Color.BLUE).visible(true));
-                        PuntoCercano();
-                        DibujaPOli(Markerdest,posicionMasCercana);
-                    } else {
-                        if (marcador2 != null) marcador2.remove();
-                        //MarkerPoints.remove(2);
-                        Toast.makeText(getApplicationContext(), "No se Encontro ninguna ruta en un radio de:  "+ radioCiruloTolerancia, Toast.LENGTH_SHORT).show();
+                        if (encuentraBordePoli == true) {
+
+
+                            mMap.addPolyline(new PolylineOptions().addAll(lista).width(5).color(Color.BLUE).visible(true));
+                            EncPuntoCerPoli encPuntoCerPoli = new EncPuntoCerPoli();
+
+                            findPunto = encPuntoCerPoli.findNearestPoint(Markerdest, lista);
+                            MarkerCercano(findPunto);//colocamos un marker en el punto mas cercano (Destino - Ruta)
+
+                            DibujaPOli(Markerdest,findPunto);
+
+                            //PuntoCercano();
+                           //DibujaPOli(Markerdest, posicionMasCercana);
+                        } else {
+                            if (marcador2 != null) marcador2.remove();
+
+                            //MarkerPoints.remove(2);
+                            Toast.makeText(getApplicationContext(), "No se Encontro ninguna ruta en un radio de:  " + radioCiruloTolerancia, Toast.LENGTH_SHORT).show();
+                        }
+                        cleanCircle();
                     }
-                    cleanCircle();
                 }
 
                 Circles(radioCiruloTolerancia);
@@ -265,7 +276,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     ///////////////////// CALCULO DEL PUNTO MAS CERCANO AL PUNTO EN LA POLILINEA ///////////////////////////
     ///// HAY QUE MEJORAR ESTE METODO NO ES TAN EFICIENTE
-private void PuntoCercano(){
+/*private void PuntoCercano(){
     double distanciaActual = Double.MAX_VALUE;
 
     for(int i=0; i < lista.size(); i++) {
@@ -274,6 +285,7 @@ private void PuntoCercano(){
             posicionMasCercana = lista.get(i);
             distanciaActual = distancia;
         }
+        System.out.println(i);
     }
     if (marcador2 != null) marcador2.remove();
     //POSICIONAMOS UN NUEVO MARKER EN EL PUNTO MAS CERCANO DE LA POLY
@@ -288,17 +300,34 @@ private void PuntoCercano(){
     Toast.makeText(getApplicationContext(), " Ruta encontrada ", Toast.LENGTH_SHORT).show();
     Toast.makeText(getApplicationContext(), "Estas a:  "+ distanciaActual + " metros de la ruta del bus ", Toast.LENGTH_SHORT).show();
 
+}*/
+private  void MarkerCercano(LatLng cercano){
+
+    if (marcador2 != null) marcador2.remove();
+
+    double distancia = Math.round(SphericalUtil.computeDistanceBetween(Markerdest,cercano));
+    //POSICIONAMOS UN NUEVO MARKER EN EL PUNTO MAS CERCANO ENTRE EL DESTINO Y LA POLY
+    marcador2 = mMap.addMarker(new MarkerOptions()
+            .position(cercano)
+            .draggable(true)
+            .title("Llegue hasta Aqui :)")
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+
+    MarkerPoints.add(cercano);
+    Toast.makeText(getApplicationContext(), " Ruta de bus encontrada ", Toast.LENGTH_SHORT).show();
+    Toast.makeText(getApplicationContext(), " El bus te deja a " +distancia + " metros de tu destino" , Toast.LENGTH_SHORT).show();
+
 }
 
 /***********DIBUJA UNA POLILINEA ENTRE EL MARKER DESTINO Y EL PUNTO MAS CERCANO DE LA POLY**********/
     private void DibujaPOli(LatLng latlonD , LatLng latlonP){
-             line = mMap.addPolyline(new PolylineOptions()
-            .add(latlonD,latlonP)
-            .width(5)
-            .color(Color.RED));
+
+        line = mMap.addPolyline(new PolylineOptions()
+                .add(latlonD,latlonP)
+                .width(5)
+                .color(Color.RED));
 
     }
-
 
     private void agregarMarcador(double lat, double lng) {
         LatLng coordenadas = new LatLng(lat, lng);
@@ -462,7 +491,7 @@ private void PuntoCercano(){
         }
         i1=i;
         //System.out.println("ultimo " +lista.get(i1-1));
-      //  mMap.addPolyline(new PolylineOptions().addAll(lista).width(5).color(Color.BLUE).visible(false));
+        //  mMap.addPolyline(new PolylineOptions().addAll(lista).width(5).color(Color.BLUE).visible(false));
     }
 
     private List<GpxNode> decodeGPXwayPoint(File f)
