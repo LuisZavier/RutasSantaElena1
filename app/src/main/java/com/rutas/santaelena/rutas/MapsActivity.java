@@ -458,7 +458,6 @@ private void PuntoDestino(LatLng pointDest){
             mMap.moveCamera(CameraUpdateFactory
                     .newLatLngZoom(new LatLng(latitude, longitude), 16));
             mMap.getUiSettings().setZoomControlsEnabled(true);
-
         }
         i1=i;
         //System.out.println("ultimo " +lista.get(i1-1));

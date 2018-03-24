@@ -1,16 +1,10 @@
 package com.rutas.santaelena.rutas;
 
-
-
-import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
-
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.PolyUtil;
 
+
 import java.util.List;
-
-
 
 /**
  * Created by Javier on 08/12/2017.
@@ -18,40 +12,33 @@ import java.util.List;
 
 public class EncPuntoCerPoli {
 
-    public LatLng findNearestPoint(LatLng test, List<LatLng> target) {
-        double distance = -1;
-        LatLng minimumDistancePoint = test;
 
-        if (test == null || target == null) {
+    public LatLng findNearestPoint(LatLng punto, List<LatLng> puntos) {
+        double distance = -1;
+        LatLng minimumDistancePoint = punto;
+
+        if (punto == null || puntos == null) {
             return minimumDistancePoint;
         }
 
-        for (int i = 0; i < target.size(); i++) {
-            LatLng point = target.get(i);
+        for (int i = 0; i < puntos.size(); i++) {
+            LatLng point = puntos.get(i);
 
             int segmentPoint = i + 1;
-            if (segmentPoint >= target.size()) {
+            if (segmentPoint >= puntos.size()) {
                 segmentPoint = 0;
             }
 
-            double currentDistance = PolyUtil.distanceToLine(test, point, target.get(segmentPoint));
+            double currentDistance = PolyUtil.distanceToLine(punto, point, puntos.get(segmentPoint));
             if (distance == -1 || currentDistance < distance) {
                 distance = currentDistance;
-                minimumDistancePoint = findNearestPoint(test, point, target.get(segmentPoint));
+                minimumDistancePoint = findNearestPoint(punto, point, puntos.get(segmentPoint));
 
             }
-
-        }
-
+}
         return minimumDistancePoint;
-
-
     }
 
-    /**
-     * basado en
-     * https://github.com/googlemaps/android-maps-utils/blob/master/library/src/com/google/maps/android/PolyUtil.java
-     */
     public LatLng findNearestPoint(final LatLng p, final LatLng start, final LatLng end) {
         if (start.equals(end)) {
             return start;
@@ -78,7 +65,5 @@ public class EncPuntoCerPoli {
         return new LatLng(start.latitude + (u * (end.latitude - start.latitude)),
                 start.longitude + (u * (end.longitude - start.longitude)));
 
-
     }
-
 }
