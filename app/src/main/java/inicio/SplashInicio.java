@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
-import com.rutas.santaelena.rutas.Home;
+import com.rutas.santaelena.rutas.Mainmenu;
 import com.rutas.santaelena.rutas.R;
 
 ;
 
 public class SplashInicio extends Activity {
-    private final int DURACION_SPLASH = 3000;
+    private final int DURACION_SPLASH = 2000;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class SplashInicio extends Activity {
 
         new Handler().postDelayed(new Runnable(){
             public void run(){
-                Intent intent = new Intent(SplashInicio.this, Home.class);
+                Intent intent = new Intent(SplashInicio.this, Mainmenu.class);
                 startActivity(intent);
                 finish();
             };
