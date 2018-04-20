@@ -2,6 +2,7 @@ package com.rutas.santaelena.rutas;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -10,11 +11,14 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -70,7 +74,8 @@ import models.RestfulClient;
 
 import static com.rutas.santaelena.rutas.R.id.map;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
+
 
     private static final int LOCATION_REQUEST = 500;
     PlaceAutocompleteFragment placeAutoComplete;
@@ -98,7 +103,50 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         MarkerPoints = new ArrayList<>();//inicializamos el marcador que se utilizara para agregar al mapa
+
+       DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+       ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+               this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+       drawer.setDrawerListener(toggle);
+       toggle.syncState();
+       NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+       navigationView.setNavigationItemSelectedListener(this);
     }
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            Intent h= new Intent(MapsActivity.this,PruebaActivity.class);
+            startActivity(h);
+        } else if (id == R.id.nav_import) {
+            Intent h= new Intent(MapsActivity.this,PruebaActivity.class);
+            startActivity(h);
+        } else if (id == R.id.nav_gallery) {
+            Toast.makeText(getApplicationContext(), "TRABAJANDO EN FRAGMENTS ACTIVITYS:  ", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_tools) {
+
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         mMap = googleMap;
@@ -108,23 +156,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         /*LatLngBounds  limiteSantaElena = (new LatLngBounds(
                 new LatLng(-33.880490, 151.184363),
                 new LatLng(-33.858754, 151.229596)));*/
-
-        /////////////  BUSQUEDA DEL DESTINO INGRESANDO POR TEXTO ///////////////////////
         placeAutoComplete = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete);
-
         ImageView searchIcon = (ImageView)((LinearLayout)placeAutoComplete.getView()).getChildAt(0);
-
-// Set the desired icon
-      searchIcon.setImageDrawable(getResources().getDrawable(R.drawable.menu));
+        searchIcon.setImageDrawable(getResources().getDrawable(R.drawable.menu));
 
         searchIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.nav_home);
-                drawer.openDrawer(GravityCompat.START);
-               //Toast.makeText(getApplicationContext(), "Aqui deberia de Desplegar Menu JAJAJA:  ", Toast.LENGTH_SHORT).show();
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawer.openDrawer(GravityCompat.START); //Despliega el menu
             }
         });
+        /////////////  BUSQUEDA DEL DESTINO INGRESANDO POR TEXTO ///////////////////////
         placeAutoComplete.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
@@ -327,7 +370,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         return responseString;
     }
-
     public class TaskRequestDirections extends AsyncTask<String, Void, String> {
 
         @Override

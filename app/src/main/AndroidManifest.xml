@@ -22,7 +22,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
         <activity
             android:name="inicio.SplashInicio"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
@@ -45,23 +44,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Mainmenu"
                 android:label="@string/title_map" />
+            <!-- android:value=".Mainmenu" -->
+
+
         </activity>
 
-        <!--
-            <activity android:name=".RutaActivity" />
-        <activity android:name="SplashInicio"></activity>
-        -->
         <activity android:name=".PruebaActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Mainmenu"
-            android:label="Prueba" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Mainmenu"
+                android:label="Prueba" />
         </activity>
 
-        <activity
+         <!-- <activity
             android:name=".Mainmenu"
             android:label="@string/title_activity_mainmenu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity> -->
     </application>
 
 </manifest>
