@@ -23,8 +23,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
@@ -43,6 +43,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.PolyUtil;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
@@ -51,6 +52,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -68,48 +70,62 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import directions.DirectionsParser;
 import directions.DisponibleNet;
-import models.RestfulClient;
+import entities.Punto;
+import entities.RutaModel;
+import models.HttpReqtask;
+import notificaciones.Notificaciones;
 
 import static com.rutas.santaelena.rutas.R.id.map;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
 
+public class MapsActivity extends FragmentActivity implements   OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
     PlaceAutocompleteFragment placeAutoComplete;
     Polyline lineRuta, polylineFinal;
     LatLng findPtoDesPoli;
     LatLng findPtoUbiPoli;
     ArrayList<LatLng> MarkerPoints;
     double lat = 0;
-    double lng = 0; int c=0;
+    double lng = 0;
+    int c = 0;
     LatLng MiDestino = new LatLng(lat, lng);
     LatLng MiUbicacion = new LatLng(lat, lng);
-    RestfulClient restfulClient = new RestfulClient();
     Circle circle;
     private GoogleMap mMap;
     private ArrayList<LatLng> lista = new ArrayList<>();
+    List<Punto> listPuntos;
     private Marker marcador, markerDestino, markerFinBus, markerRutaBus;
-    String DuracionRecorrido ="";
+    String DuracionRecorrido = "";
     String DuracionRecorrido2 = "";
 
-   @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-       SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
 
         MarkerPoints = new ArrayList<>();//inicializamos el marcador que se utilizara para agregar al mapa
 
-       DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-       ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-               this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-       drawer.setDrawerListener(toggle);
-       toggle.syncState();
-       NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-       navigationView.setNavigationItemSelectedListener(this);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
+
+
+     AsyncTask<Void, Void, RutaModel> httpReqtask = new HttpReqtask(new HttpReqtask.AsyncResponse() {
+        @Override
+        public void processFinish(RutaModel rutaModel) {
+            Toast.makeText(getApplicationContext(), "probando async ", Toast.LENGTH_SHORT).show();
+            System.out.println("dato tomado de la async" + rutaModel.getListasPuntos());
+            listPuntos = rutaModel.getListasPuntos();
+        }
+    }).execute();
 
 
     @Override
@@ -131,6 +147,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Intent h= new Intent(MapsActivity.this,PruebaActivity.class);
             startActivity(h);
         } else if (id == R.id.nav_import) {
+            Intent h= new Intent(MapsActivity.this, Notificaciones.class);
+            startActivity(h);
 
         } else if (id == R.id.nav_gallery) {
             Toast.makeText(getApplicationContext(), "TRABAJANDO EN FRAGMENTS ACTIVITYS:  ", Toast.LENGTH_SHORT).show();
@@ -148,7 +166,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(final GoogleMap googleMap) {
         mMap = googleMap;
         currentLocation();
-        polilinea();
+        //polilinea();
+       polilineaRestful();
 
         placeAutoComplete  = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete);
         EditText etPlace = (EditText)placeAutoComplete.getView().findViewById(R.id.place_autocomplete_search_input);
@@ -186,7 +205,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Log.d("Maps", "An error occurred: " + status);
             }
         });
-        /* METODOD PARA AGREGAR EN MARKER EN EL MAPA PULSO EN PANTALLA */
+ /* METODOD PARA AGREGAR EN MARKER EN EL MAPA PULSO EN PANTALLA */
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng pointDest) {
@@ -205,7 +224,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerPoints.add(finalBus);
     }
 
-   private void IrRutabus(LatLng paradero) {
+    private void IrRutabus(LatLng paradero) {
         if (markerRutaBus != null) markerRutaBus.remove();
         //Posicionamos un nuevo marker entre la ubicacion del usuario y la ruta del bus
         //le muestra el punto mas cernaco a tomar el bus
@@ -249,59 +268,61 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerPoints.add(pointDest);
         MiDestino = MarkerPoints.get(1);
 
-            if (MarkerPoints.size() >= 2) {
+        if (MarkerPoints.size() >= 2) {
 
-                if (lineRuta != null) lineRuta.remove();
-                if (polylineFinal !=null) polylineFinal.remove();
+            if (lineRuta != null) lineRuta.remove();
+            if (polylineFinal !=null) polylineFinal.remove();
 
-                //isLocationOnEdge: DETERMINA SI UN PUNTO SE ENCUENTRA EN UNA POLILINEA CERCA DENTRO O FUERA DE ELLA CON UN RADIO DE TOLERANCIA
-                boolean encuentraBordePoli = PolyUtil.isLocationOnEdge(pointDest, lista, false, radioCiruloTolerancia);
+            //isLocationOnEdge: DETERMINA SI UN PUNTO SE ENCUENTRA EN UNA POLILINEA CERCA DENTRO O FUERA DE ELLA CON UN RADIO DE TOLERANCIA
+            boolean encuentraBordePoli = PolyUtil.isLocationOnEdge(pointDest, lista, false, radioCiruloTolerancia);
 
-                while (encuentraBordePoli != true) {
-                    cleanCircle();
-                    while (radioCiruloTolerancia < 1000) { //Radio Iterativo
-
-                        radioCiruloTolerancia = radioCiruloTolerancia + 100;
-
-                        Circles(radioCiruloTolerancia);
-
-                        cleanCircle();
-                        encuentraBordePoli = PolyUtil.isLocationOnEdge(pointDest, lista, false, radioCiruloTolerancia);
-                        if (encuentraBordePoli == true)
-                            break;
-                    }
-                    break;
-                }
-
-                if (encuentraBordePoli == true) {
-
-                    lineRuta = mMap.addPolyline(new PolylineOptions().addAll(lista).width(5).color(Color.BLUE).visible(true));
-
-                    EncPuntoCerPoli encPuntoCerPoli = new EncPuntoCerPoli();
-
-                    findPtoUbiPoli = encPuntoCerPoli.findNearestPoint(MiUbicacion, lista);//Encontramos el punto mas cercano Mi Ubi - Poli
-                    findPtoDesPoli = encPuntoCerPoli.findNearestPoint(MiDestino, lista);//Encontramos el punto mas cercano Dest-Poli
-
-                    DisponibleNet disponibleNet = new DisponibleNet();
-                    boolean conecta2 = disponibleNet.compruebaConexion(this);
-                    if (conecta2 == true) {//Solo si hay connexion a internet mostrara el recorrido entre los puntos
-
-                        getRequest(MiUbicacion, findPtoUbiPoli);
-                        getRequest(findPtoDesPoli, MiDestino);
-
-                    }else{ //caso contrario solo ubicara los marcadores si no hay conexion a net sea wifi o datos
-                        DuracionRecorrido="";DuracionRecorrido2="";
-                        IrRutabus(findPtoUbiPoli); MarkerCercano(findPtoDesPoli); DestinoFinal(pointDest);
-                    }
-                } else {
-                    if (encuentraBordePoli == false) {
-                        c=0; DuracionRecorrido=""; mMap.clear();
-                        Toast.makeText(getApplicationContext(), "No se Encontro ninguna ruta en un radio de:  " + radioCiruloTolerancia, Toast.LENGTH_SHORT).show();
-                        DestinoFinal(pointDest);
-                    }
-                }
+            while (encuentraBordePoli != true) {
                 cleanCircle();
+                while (radioCiruloTolerancia < 1000) { //Radio Iterativo
+
+                    radioCiruloTolerancia = radioCiruloTolerancia + 100;
+
+                    Circles(radioCiruloTolerancia);
+
+                    cleanCircle();
+                    encuentraBordePoli = PolyUtil.isLocationOnEdge(pointDest, lista, false, radioCiruloTolerancia);
+                    if (encuentraBordePoli == true)
+                        break;
+                }
+                break;
             }
+
+            if (encuentraBordePoli == true) {
+
+                lineRuta = mMap.addPolyline(new PolylineOptions().addAll(lista).width(5).color(Color.BLUE).visible(true));
+
+                EncPuntoCerPoli encPuntoCerPoli = new EncPuntoCerPoli();
+
+                findPtoUbiPoli = encPuntoCerPoli.findNearestPoint(MiUbicacion, lista);//Encontramos el punto mas cercano Mi Ubi - Poli
+                findPtoDesPoli = encPuntoCerPoli.findNearestPoint(MiDestino, lista);//Encontramos el punto mas cercano Dest-Poli
+
+                DisponibleNet disponibleNet = new DisponibleNet();
+                boolean conecta2 = disponibleNet.compruebaConexion(this);
+                if (conecta2 == true) {//Solo si hay connexion a internet mostrara el recorrido entre los puntos
+
+                    getRequest(MiUbicacion, findPtoUbiPoli);
+
+                    getRequest(findPtoDesPoli, MiDestino);
+                    MarkerCercano(findPtoDesPoli);//colocamos un marker en el punto mas cercano al destino
+
+                }else{ //caso contrario solo ubicara los marcadores si no hay conexion a net sea wifi o datos
+                    DuracionRecorrido="";DuracionRecorrido2="";
+                    IrRutabus(findPtoUbiPoli); MarkerCercano(findPtoDesPoli); DestinoFinal(pointDest);
+                }
+            } else {
+                if (encuentraBordePoli == false) {
+                    c=0; DuracionRecorrido=""; mMap.clear();
+                    Toast.makeText(getApplicationContext(), "No se Encontro ninguna ruta en un radio de:  " + radioCiruloTolerancia, Toast.LENGTH_SHORT).show();
+                    DestinoFinal(pointDest);
+                }
+            }
+            cleanCircle();
+        }
 
         Circles(radioCiruloTolerancia);
     }
@@ -309,12 +330,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         DirectionsParser directionsParser = new DirectionsParser();
 
         String url = directionsParser.getRequestUrl(p1, p2);
+
         TaskRequestDirectionss taskRequestDirections = new TaskRequestDirectionss();
         taskRequestDirections.execute(url);
 
+
     }
 
-    private String requestDirection(String reqUrl) throws IOException {
+      private String requestDirection(String reqUrl) throws IOException {
         String responseString = "";
         InputStream inputStream = null;
         HttpURLConnection httpURLConnection = null;
@@ -347,6 +370,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         return responseString;
     }
+
 
     public class TaskRequestDirectionss extends AsyncTask<String, Void, String> {
 
@@ -392,12 +416,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             PolylineOptions polylineOptions = null;
             String distance = "";
             String duration = "";
-           // for (List<HashMap<String, String>> path : lists) {
+            // for (List<HashMap<String, String>> path : lists) {
             for(int i=0;i<lists.size();i++){
                 points = new ArrayList();
                 polylineOptions = new PolylineOptions();
                 List<HashMap<String, String>> path = lists.get(i);
-               //for (HashMap<String, String> point : path) {
+                //for (HashMap<String, String> point : path) {
                 for(int j=0;j<path.size();j++){
                     HashMap<String,String> point = path.get(j);
                     if(j==0){	// Get distance from the list
@@ -418,19 +442,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
             if (c==0){
-              DuracionRecorrido2 = ("Distancia:" + distance + ", Duracion:" + duration);
+                DuracionRecorrido2 = ("Distancia:" + distance + ", Duracion:" + duration);
                 IrRutabus(findPtoUbiPoli);//colocamos un marcador en el punto mas cercano a coger el bus
-          }else {
-              DuracionRecorrido = ("Distancia:" + distance + ", Duracion:" + duration);
-                MarkerCercano(findPtoDesPoli);//colocamos un marker en el punto mas cercano al destino
+            }else {
+                DuracionRecorrido = ("Distancia:" + distance + ", Duracion:" + duration);
+                //MarkerCercano(findPtoDesPoli);//colocamos un marker en el punto mas cercano al destino
                 DestinoFinal(MiDestino);
-          }
+            }
             c++;
         }
 
     }
 
-   private void agregarMarcador(double lat, double lng) {
+    private void agregarMarcador(double lat, double lng) {
         LatLng coordenadas = new LatLng(lat, lng);
         CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 15);
         if (marcador != null) marcador.remove();
@@ -440,6 +464,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ubicacion)));//ubicacion actual
         //mMap.animateCamera(miUbicacion);
         MiUbicacion = coordenadas;
+        //System.out.println("cordenadas " + coordenadas);
         // mMap.setOnMarkerClickListener(this);
     }
     private void actualizarUbicacion(Location location) {
@@ -462,22 +487,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @Override
         public void onProviderDisabled(String provider) {}
     };
+
     private void currentLocation() {
-       if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Log.e("Location", "No se tienen permisos necesarios!, se requieren.");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 225);
             return;
 
-        } else {
-            Log.i("Location", "Permisos necesarios OK!.");
-            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-           actualizarUbicacion(location);
-           locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000, 0, locListener);
         }
-        mMap.getUiSettings().setZoomControlsEnabled(true);
+        Log.i("Location", "Permisos necesarios OK!.");
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        actualizarUbicacion(location);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000, 0, locListener);
+
+
         mMap.setMyLocationEnabled(true);
     }
+
     private void Circles(int rad) {
         circle = mMap.addCircle(new CircleOptions()
                 .center(MiDestino)
@@ -491,14 +519,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void cleanCircle() {
         if (circle != null) circle.remove();
     }
-    public void polilinea() {
+
+    public void polilineaRestful() {
+
+        for (int i = 0; i < listPuntos.size(); i++) {
+
+            double latitude =  listPuntos.get(i).getLatitud();
+            double longitude = listPuntos.get(i).getLongitud();
+
+            LatLng punto = new LatLng(latitude, longitude);
+            lista.add(punto);
+            mMap.moveCamera(CameraUpdateFactory
+                    .newLatLngZoom(new LatLng(latitude, longitude), 16));
+        }
+      //  mMap.addPolyline(new PolylineOptions().addAll(lista).width(5).color(Color.GREEN));
+    }
+
+   public void polilinea() {
         Resources res = getResources();
-        TextView textInfo = (TextView) findViewById(R.id.info);
+    //    TextView textInfo = (TextView) findViewById(R.id.info);
         String info = "";
 
         List<GpxNode> gpxList = decodeGPX(res.openRawResource(R.raw.transcisa7));
         for (int i = 0; i < gpxList.size(); i++) {
-            info = gpxList.get(i).getLocationString();
+           info = gpxList.get(i).getLocationString();
             String[] latlong = info.split(":");
             double latitude = Double.parseDouble(latlong[0]);
             double longitude = Double.parseDouble(latlong[1]);
