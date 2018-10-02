@@ -17,15 +17,16 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class TaskRequestDirectionss2 extends AsyncTask<String, Void, String> {
+public class TaskRequestPuntos extends AsyncTask<String, Void, String> {
 
     private MapsActivity mapsActivity;
 
-   public TaskRequestDirectionss2(MapsActivity mapsActivity) {
+
+    public TaskRequestPuntos(MapsActivity mapsActivity) {
         this.mapsActivity = mapsActivity;   //es necesario para prueba actyvity
     }
 
-    public TaskRequestDirectionss2() {
+    public TaskRequestPuntos() {
 
     }
 
@@ -91,7 +92,7 @@ public class TaskRequestDirectionss2 extends AsyncTask<String, Void, String> {
     }
     public AsyncRespDirections delegate = null;
 
-    public TaskRequestDirectionss2(AsyncRespDirections delegate){
+    public TaskRequestPuntos(AsyncRespDirections delegate){
         this.delegate = delegate;
     }
 

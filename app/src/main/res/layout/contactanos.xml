@@ -54,6 +54,44 @@
                 android:layout_height="wrap_content"
                 android:hint="Escribe tu Asunto"
                 tools:ignore="HardcodedText,TextFields"></EditText>
+            <RadioButton
+                android:id="@+id/anonimo"
+                android:layout_width="187dp"
+                android:layout_height="match_parent"
+                android:text="Enviar como Anonimo ?"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/celular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Movil :"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/et_movil"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Escriba un numero de contacto"
+                tools:ignore="HardcodedText,TextFields"></EditText>
+
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Nombre :"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/et_nombre"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Escriba su nombre o un Alias"
+                tools:ignore="HardcodedText,TextFields"></EditText>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,7 +104,7 @@
             <EditText
                 android:id="@+id/et_EmailMensaje"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="86dp"
                 android:gravity="top"
                 android:hint="Escribe tu Mensaje"
                 android:inputType="textMultiLine"
@@ -79,6 +117,8 @@
                 android:layout_height="wrap_content"
                 android:text="Enviar"
                 tools:ignore="HardcodedText" />
+
+
         </LinearLayout>
     </ScrollView>
 
