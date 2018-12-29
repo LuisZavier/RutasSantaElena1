@@ -8,10 +8,20 @@ import java.util.List;
 
 /**
  * Created by Javier on 08/12/2017.
+ * DEVUELVE EL PUNTO MAS CERCANO A LA POLILINEA
+ * Solucion basada en la respuesta de : Ver Link de abajo
+ *
+ * https://stackoverflow.com/questions/36104809/find-the-closest-point-on-polygon-to-user-location
+ *
  */
 
 public class EncPuntoCerPoli {
 
+    //TODO BUSCAR URL METODO
+    /**
+     * Based on `distanceToLine` method from
+     * https://github.com/googlemaps/android-maps-utils/blob/master/library/src/com/google/maps/android/PolyUtil.java
+     */
 
     public LatLng findNearestPoint(LatLng punto, List<LatLng> puntos) {
         double distance = -1;

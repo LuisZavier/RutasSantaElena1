@@ -1,13 +1,14 @@
 package notificaciones;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Javier on 29/05/2018.
  */
 
-public class AbstractAsyncActivity extends Activity {
+
+public class AbstractAsyncActivity extends AppCompatActivity {
 
     protected static final String TAG = AbstractAsyncActivity.class.getSimpleName();
 

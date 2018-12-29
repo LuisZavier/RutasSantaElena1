@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="url_directions">https://maps.googleapis.com/maps/</string>
+    <string name="url_reporte">http://facsistel.upse.edu.ec:8082/reportes</string>
+    <string name="url_asunto">http://192.168.101.1:8082/asuntos/</string>
+    <string name="url_paradas_cercanas">http://facsistel.upse.edu.ec:8082/paradasCercanasRadio/70/</string>
+    <string name="url_linea_bus_individual">http://facsistel.upse.edu.ec:8082/rutas/linea/</string>
+    <string name="url_rutas_todas">http://facsistel.upse.edu.ec:8082/rutas/</string>
+
+
+
+
+</resources>

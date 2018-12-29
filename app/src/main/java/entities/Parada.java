@@ -4,40 +4,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Parada {
 
-
 	@JsonProperty("id")
 	private String id;
-	@JsonProperty("type")
-	private String type;
 	@JsonProperty("nombre")
 	private String nombre;
 	@JsonProperty("urlFoto")
 	private String urlFoto;
 	@JsonProperty("coordenada")
-    private Punto coordenada;
+    private Point coordenada;
+	@JsonProperty("estado")
+	private Boolean estado;
 
-	public Parada(String nombre, String urlFoto, Punto coordenada) {
+	public Parada(String nombre, String urlFoto, Point coordenada) {
 		super();
-		this.type = "parada";
 		this.nombre = nombre;
 		this.urlFoto = urlFoto;
 		this.coordenada = coordenada;
+		this.estado=true;
 	}
 	public Parada() {
-		super();
-		this.type = "parada";
+		this.estado=true;
+		//super();
 	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
 	}
 	public String getNombre() {
 		return nombre;
@@ -51,16 +44,29 @@ public class Parada {
 	public void setUrlFoto(String urlFoto) {
 		this.urlFoto = urlFoto;
 	}
-	public Punto getCoordenada() {
+	public Point getCoordenada() {
 		return coordenada;
 	}
-	public void setCoordenada(Punto coordenada) {
+	public void setCoordenada(Point coordenada) {
 		this.coordenada = coordenada;
 	}
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+
 	@Override
 	public String toString() {
-		return "Parada [id=" + id + ", type=" + type + ", nombre=" + nombre + ", urlFoto=" + urlFoto + ", coordenada="
-				+ coordenada + "]";
+		return "Parada{" +
+				"id='" + id + '\'' +
+				", nombre='" + nombre + '\'' +
+				", urlFoto='" + urlFoto + '\'' +
+				", coordenada=" + coordenada +
+				'}';
 	}
 }
 

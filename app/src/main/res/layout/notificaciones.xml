@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="notificaciones.Notificaciones">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quieres decirnos algo ?"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="12sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contactanos por aqui"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="12sp"
+        tools:ignore="HardcodedText" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:weightSum="1"
+            tools:ignore="ScrollViewSize">
+
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Asunto :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <Spinner
+                android:id="@+id/id_asuntoSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/anonimo"
+                android:layout_width="180dp"
+                android:layout_height="20dp"
+                android:text="Enviar como Anonimo ?"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/celular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Movil :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/id_movil"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Escriba un numero de contacto"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields"></EditText>
+
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Nombre :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/id_nombre"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Escriba su nombre o un Alias"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields"></EditText>
+
+            <TextView
+                android:id="@+id/Disco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Num Disco :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/id_numeroDisco"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Escriba Num Disco"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields"></EditText>
+
+            <TextView
+                android:id="@+id/Recorrido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Recorrido del bus :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/id_linea_bus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Escriba linea recorrido del bus"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields"></EditText>
+
+            <TextView
+                android:id="@+id/Ubicacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Ubicacion del incidente :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/id_ubicacionIncidente"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Escriba donde fue el incidente"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Mensaje"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/id_mensage"
+                android:layout_width="fill_parent"
+                android:layout_height="61dp"
+                android:gravity="top"
+                android:hint="Escribe tu Mensaje"
+                android:inputType="textMultiLine"
+                android:lines="7"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields" />
+
+            <Button
+                android:id="@+id/btnEnviar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Enviar"
+                tools:ignore="HardcodedText" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

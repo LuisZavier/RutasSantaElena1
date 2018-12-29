@@ -12,5 +12,11 @@
     <string name="title_activity_mainmenu">Santa Elena en Bus</string>
     <string name="home">Home</string>
     <string name="slideshow">Slideshow</string>
+    <string name="submit">submit</string>
+    <string name="pass">pass</string>
+    <string name="estacionamiento_de_la_linea_7">Estacionamiento de la Linea 7</string>
+    <string name="title_activity_lineas_buses">Map</string>
+    <string name="title_activity_maps">Map</string>
+
 
 </resources>

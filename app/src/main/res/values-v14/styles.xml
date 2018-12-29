@@ -9,4 +9,7 @@
         <!-- API 14 theme customizations can go here. -->
     </style>
 
+    <attr format="color" name="colorPrimary"/>
+  <attr format="dimension" name="actionBarSize"/>
+
 </resources>

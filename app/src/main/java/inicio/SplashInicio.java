@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
-import com.rutas.santaelena.rutas.Mainmenu;
+import com.rutas.santaelena.rutas.MapsActivity;
 import com.rutas.santaelena.rutas.R;
 
 ;
@@ -25,7 +25,7 @@ public class SplashInicio extends Activity {
 
         new Handler().postDelayed(new Runnable(){
             public void run(){
-                Intent intent = new Intent(SplashInicio.this, Mainmenu.class);
+                Intent intent = new Intent(SplashInicio.this, MapsActivity.class);
                 startActivity(intent);
                 finish();
             };
