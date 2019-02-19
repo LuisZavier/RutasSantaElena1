@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="denuncias.Notificaciones">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MENSAJE ENVIADO"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="12sp"
+        tools:ignore="HardcodedText" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="531dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:weightSum="1"
+            tools:ignore="ScrollViewSize">
+
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Asunto :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Txt_asunto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/celular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Movil :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Txt_movil"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields"></TextView>
+
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Nombre :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Txt_nombre"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
+                android:maxLength="30"
+                android:singleLine="true"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields"></TextView>
+
+            <TextView
+                android:id="@+id/Disco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Num Disco :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Txt_numeroDisco"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="3"
+                android:singleLine="true"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields"></TextView>
+
+            <TextView
+                android:id="@+id/Recorrido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Recorrido del bus :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Txt_linea_bus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789ÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú "
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields"></TextView>
+
+            <TextView
+                android:id="@+id/Ubicacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Ubicacion del incidente :"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Txt_ubicacionIncidente"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Mensaje"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Txt_mensage"
+                android:layout_width="fill_parent"
+                android:layout_height="87dp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:lines="7"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextFields" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
